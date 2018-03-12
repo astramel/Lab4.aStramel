@@ -15,6 +15,7 @@ typedef unsigned long ulong;
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
 
 using std::cout;
 using std::endl;
@@ -52,24 +53,56 @@ short compute_sum(const vector<short> &data) {
   return sum;
 }
 
+
 // TODO:
 // add 10 numbers to the data vector
 // for loops allowed
 // test by creating empty vec in main, call add
 /// then print out
-void add_numbers(vector<short> &data){
-  cout << "NOT IMPLEMENTED YET" << endl;
+void add_numbers (vector<short> &data)
+{
+	for (short i = 0; i < 10; i++) 
+	{
+		short random = rand() % 101;
+		data.push_back(random);
+	}
 }
 
 // TODO:
 // print the value at all the even locations of the vector
-void print_even(const vector<short>& data){
-  cout << "NOT IMPLEMENTED YET" << endl;
+void print_even(const vector<short>& data)
+{
+	if (data.empty())
+	{
+		cout << "<empty>";
+	}
+	else 
+	{
+		cout << "<" << data.at(0);
+		for (short i = 1; i<data.size(); i++)
+		{
+			if (i % 2 == 0)
+			cout << ", " << data.at(i);
+		}
+		cout << ">";
+	}
 }
 
 
 // TODO:
 // return true if the value is present in the data vector, false otherwise
-bool is_present(const vector<short> &data, short value){
-  cout << "NOT IMPLEMENTED YET" << endl;
+bool is_present(const vector<short> &data, short value)
+{
+	std::vector<short>::const_iterator iterator = data.begin();
+	bool present = false;
+	while (iterator != data.end())
+	{
+		if (*iterator == value)
+		{
+			present = true;
+		}
+		iterator++;
+	}
+
+	return present;
 }
